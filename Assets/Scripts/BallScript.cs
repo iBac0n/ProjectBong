@@ -33,28 +33,50 @@ public class BallScript : MonoBehaviour {
             return false;
         } else {
             Vector2 velocity = new Vector2(startPlayer.transform.position.x, startPlayer.transform.position.y);
-            velocity.Normalize();
-            rigid2D.AddForce(velocity * ballSpeed);
-            Debug.LogError("Starting!");
+            rigid2D.velocity = velocity.normalized * ballSpeed;
+            Debug.LogError("Starting: " + velocity.normalized * ballSpeed);
             return true;
         }
     }
+
+
+    //Careful we have to different between vertical players and horizontal players !
     float hitFactor(Vector2 ballPos, Vector2 racketPos,
-                float racketHeight) {
-        // ascii art:
-        // ||  1 <- at the top of the racket
-        // ||
-        // ||  0 <- at the middle of the racket
-        // ||
-        // || -1 <- at the bottom of the racket
-        return (ballPos.y - racketPos.y) / racketHeight;
+                float racketHeight, bool vertical) {
+        if(vertical) {
+            return (ballPos.x - racketPos.x) / racketHeight;
+        } else {
+            return (ballPos.y - racketPos.y) / racketHeight;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col) {
         Debug.LogError("COL");
         if(col.transform.tag == "Player") {
-            Debug.LogError("COLLIDING!");
-            rigid2D.velocity += col.gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
+            PlayerController controller = col.gameObject.GetComponent<PlayerController>();
+            if(controller == null) {
+                Debug.LogError("Not a player!");
+            }
+            if(controller.playerPosition == "Bottom") {
+                float x = hitFactor(transform.position,
+                                    col.transform.position,
+                                    col.collider.bounds.size.x,
+                                    true);
+
+                Vector2 dir = new Vector2(x, 1).normalized;
+
+                GetComponent<Rigidbody2D>().velocity = dir * ballSpeed;
+            } else if(controller.playerPosition == "Top") {
+                float x = hitFactor(transform.position,
+                                    col.transform.position,
+                                    col.collider.bounds.size.x,
+                                    true);
+
+                Vector2 dir = new Vector2(x, -1).normalized;
+
+                GetComponent<Rigidbody2D>().velocity = dir * ballSpeed;
+            }
+            //rigid2D.velocity += col.gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
         }
     }
 }

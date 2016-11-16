@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public bool isVerticalPlayer = false;
     public Color playerColor;
     public float playerSpeed;
-
+    public string playerPosition = "";
     public int playerID = 0;
 
 
@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour {
         sRenderer = this.GetComponent<SpriteRenderer>();
         sRenderer.color = playerColor;
         this.transform.name = playerName;
+
+        if(this.transform.position.y > 0) {
+            playerPosition = "Top";
+        } else if(this.transform.position.y < 0) {
+            playerPosition = "Bottom";
+        }
     }
 
 

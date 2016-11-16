@@ -1,0 +1,12 @@
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEditor.dll
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEngine.dll
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEngine.Networking.dll
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEngine.xml
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEngine.Networking.xml
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_bin\Debug\UnityEditor.xml
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
+D:\GamesProg\Projects\UltimatePlong\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb
