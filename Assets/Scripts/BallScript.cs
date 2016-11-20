@@ -7,7 +7,7 @@ public class BallScript : MonoBehaviour {
     public Color ballColor;
 
     private Rigidbody2D rigid2D;
-    private CircleCollider2D circleColl2D;
+    public CircleCollider2D circleColl2D;
     void Start() {
         rigid2D = this.GetComponent<Rigidbody2D>();
         circleColl2D = this.GetComponent<CircleCollider2D>();
@@ -51,7 +51,6 @@ public class BallScript : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        Debug.LogError("COL");
         if(col.transform.tag == "Player") {
             PlayerController controller = col.gameObject.GetComponent<PlayerController>();
             if(controller == null) {

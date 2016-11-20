@@ -22,14 +22,43 @@ public class PopupManager : MonoBehaviour {
 
     void Update() {
         if(Time.time > timeMark) {
-            Debug.LogError("Trying to spawn a popup!");
-            SpawnPopup(Random.Range(3, 5), currentTypeToSpawn, new Vector3(Random.Range(-4, 4), Random.Range(-4, 4), 0));
+            currentTypeToSpawn = GetRandomType();
+            SpawnPopup(Random.Range(4, 6), currentTypeToSpawn, new Vector3(Random.Range(-4, 4), Random.Range(-4, 4), 0));
             timeMark = Time.time + cooldown;
         }
     }
 
+    public PopupTypes GetRandomType() {
+        float randomNumber = Random.Range(0, 2);//TODO This has to be hardcoded !
+        if(randomNumber == 0) {
+            return PopupTypes.Gravity;
+        } else if(randomNumber == 1) {
+            return PopupTypes.Speed;
+        }
+
+        return PopupTypes.Speed;
+    }
+
     public void ActivateEffect(PopupTypes type) {
         Debug.LogError("Activating");
+        if(type == PopupTypes.Gravity) {
+            currentBall.GetComponent<BallScript>().circleColl2D.sharedMaterial.bounciness += 0.5f;
+            StartCoroutine(DeactivateEffect(PopupTypes.Gravity, 6f));
+        } else if(type == PopupTypes.Speed) {
+            currentBall.GetComponent<BallScript>().ballSpeed += 5;
+            StartCoroutine(DeactivateEffect(PopupTypes.Speed, 6f));
+        }
+    }
+
+    public IEnumerator DeactivateEffect(PopupTypes type, float duration) {
+        Debug.LogError("Waitin for Deactivating the effect");
+        yield return new WaitForSeconds(duration);
+        Debug.LogError("DeactivateEffect");
+        if(type == PopupTypes.Gravity) {
+            currentBall.GetComponent<BallScript>().circleColl2D.sharedMaterial.bounciness -= 0.5f;
+        } else if(type == PopupTypes.Speed) {
+            currentBall.GetComponent<BallScript>().ballSpeed -= 5;
+        }
     }
 
     public bool SpawnPopup(float duration, PopupTypes type, Vector3 spawnPosition) {
