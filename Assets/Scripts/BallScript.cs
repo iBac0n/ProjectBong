@@ -20,6 +20,9 @@ public class BallScript : MonoBehaviour {
 
     }
 
+    void FixedUpdate() {
+        rigid2D.velocity = rigid2D.velocity.normalized * ballSpeed;
+    }
 
     public GameObject GetRandomPlayer() {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
