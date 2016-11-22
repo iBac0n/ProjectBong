@@ -8,6 +8,8 @@ public class BallScript : MonoBehaviour {
 
     private Rigidbody2D rigid2D;
     public CircleCollider2D circleColl2D;
+
+    private TrailRenderer tr;
     void Start() {
         rigid2D = this.GetComponent<Rigidbody2D>();
         circleColl2D = this.GetComponent<CircleCollider2D>();
@@ -17,11 +19,12 @@ public class BallScript : MonoBehaviour {
 
 
     void Update() {
-
+        Debug.DrawRay(this.transform.position, rigid2D.velocity, Color.red);
+        //rigid2D.velocity = ballSpeed * (rigid2D.velocity.normalized);
     }
 
     void FixedUpdate() {
-        rigid2D.velocity = rigid2D.velocity.normalized * ballSpeed;
+
     }
 
     public GameObject GetRandomPlayer() {

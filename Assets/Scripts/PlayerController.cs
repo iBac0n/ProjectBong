@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour {
     public string playerPosition = "";
     public int playerID = 0;
 
-
+    private Animator anim;
     private SpriteRenderer sRenderer;
     void Start() {
-        sRenderer = this.GetComponent<SpriteRenderer>();
+        //anim = this.transform.GetChild(0).GetComponent<Animator>();
+        sRenderer = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
         sRenderer.color = playerColor;
         this.transform.name = playerName;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         } else if(this.transform.position.y < 0) {
             playerPosition = "Bottom";
         }
+        //anim.SetInteger("PlayerID", playerID);
     }
 
 
@@ -44,4 +46,11 @@ public class PlayerController : MonoBehaviour {
 
         this.GetComponent<Rigidbody2D>().velocity = velocity * playerSpeed;
     }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        if(col.transform.name == "Ball") {
+            //anim.SetTrigger("isHit");
+        }
+    }
+
 }
