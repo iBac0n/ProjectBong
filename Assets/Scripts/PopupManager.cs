@@ -55,7 +55,7 @@ public class PopupManager : MonoBehaviour {
         yield return new WaitForSeconds(duration);
         Debug.LogError("DeactivateEffect");
         if(type == PopupTypes.Gravity) {
-            currentBall.GetComponent<BallScript>().circleColl2D.sharedMaterial.bounciness -= 0.5f;
+            //currentBall.GetComponent<BallScript>().circleColl2D.sharedMaterial.bounciness -= 0.5f;
         } else if(type == PopupTypes.Speed) {
             currentBall.GetComponent<BallScript>().ballSpeed -= 5;
         }

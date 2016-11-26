@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\BallVisual.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\PointTrigger.cs" />
     <Compile Include="Assets\Scripts\PopupManager.cs" />
     <Compile Include="Assets\Scripts\Popups.cs" />
   </ItemGroup>
