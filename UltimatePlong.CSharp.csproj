@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\PointTrigger.cs" />
     <Compile Include="Assets\Scripts\PopupManager.cs" />
     <Compile Include="Assets\Scripts\Popups.cs" />
+    <Compile Include="Assets\Scripts\UIManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
