@@ -41,6 +41,7 @@ public class PopupManager : MonoBehaviour {
 
     public void ActivateEffect(PopupTypes type) {
         Debug.LogError("Activating");
+        currentBall = GameObject.FindGameObjectWithTag("Ball");
         if(type == PopupTypes.Gravity) {
             //currentBall.GetComponent<BallScript>().circleColl2D.sharedMaterial.bounciness += 0.5f;
             StartCoroutine(DeactivateEffect(PopupTypes.Gravity, 6f));

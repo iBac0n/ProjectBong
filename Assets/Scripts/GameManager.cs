@@ -13,12 +13,20 @@ public class GameManager : MonoBehaviour {
     private GameObject pointBottom;
 
     private int[] scoredPoints;
+
+    private GameData gD;
     // Use this for initialization
     void Start() {
+        gD = GameObject.Find("GameData").GetComponent<GameData>();
+        playerColors = gD.playerColors;
+        playerNames = gD.playerNames;
+        //playerCount = gD.playerCount;
         scoredPoints = new int[playerCount];
         pointTop = this.transform.GetChild(1).gameObject;
         pointBottom = this.transform.GetChild(0).gameObject;
+        Debug.LogError("Start");
         StartGame(playerCount);
+        ResetGame();
     }
 
     // Update is called once per frame
@@ -65,6 +73,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void StartGame(int playerNum) {
+        //if(playerNum == 2) {
+        //    Camera.main.orthographicSize = 7;
+        //} else if(playerNum == 4) {
+        //    Camera.main.orthographicSize = 10;
+        //}
         for(int i = 0; i < playerNum; i++) {
             if(i == 0) {
                 GameObject playerGO = (GameObject)Instantiate(playerPrefab, startPositions[i], Quaternion.identity);
