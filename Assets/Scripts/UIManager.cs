@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour {
     public Vector3 playerOptionStartPosition;
     public Vector3 offset;
 
+    public Animator animMainPanel;
+    public Animator animSingleplayerPanel;
+
     private GameObject pCount;
     private List<GameObject> playerOptionPanels = new List<GameObject>();
 
@@ -67,6 +70,16 @@ public class UIManager : MonoBehaviour {
         return Color.black;
     }
 
+    public void MainMenuSingleplayerButton() {
+        animMainPanel.SetBool("SwipeLeft", true);
+        animSingleplayerPanel.SetBool("SwipeLeft", true);
+    }
+
+    public void SingleplayerPanelBackButton() {
+        animMainPanel.SetBool("SwipeLeft", false);
+        animSingleplayerPanel.SetBool("SwipeLeft", false);
+    }
+
     public void SingleplayerButton() {
         GameData gD = GameObject.Find("GameData").GetComponent<GameData>();
         gD.playerCount = currentPlayerAmount;
@@ -79,6 +92,7 @@ public class UIManager : MonoBehaviour {
             GameObject colorObject = parent.transform.GetChild(2).gameObject;
             gD.playerColors[i] = CheckWhatColor(colorObject.GetComponent<Dropdown>().captionText.text);
         }
+        Debug.LogError("LoadingNewScene");
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }
