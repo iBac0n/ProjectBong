@@ -19,10 +19,19 @@ public class PlayerController : MonoBehaviour {
         sRenderer.color = playerColor;
         this.transform.name = playerName;
 
-        if(this.transform.position.y > 0) {
+        if(this.transform.position.y > 0 && isVerticalPlayer == false) {
             playerPosition = "Top";
-        } else if(this.transform.position.y < 0) {
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            Debug.LogError(this.GetComponent<Rigidbody2D>().constraints);
+        } else if(this.transform.position.y < 0 && isVerticalPlayer == false) {
             playerPosition = "Bottom";
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        } else if(this.transform.position.x > 0) {
+            playerPosition = "Right";
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        } else if(this.transform.position.x < 0) {
+            playerPosition = "Left";
+            this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
         //anim.SetInteger("PlayerID", playerID);
     }

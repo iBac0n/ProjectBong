@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour {
     public Animator animMainPanel;
     public Animator animSingleplayerPanel;
 
+    public Vector3[] startPositions2P;
+    public Vector3[] startPositions4P;
+
     private GameObject pCount;
     private List<GameObject> playerOptionPanels = new List<GameObject>();
 
@@ -91,6 +94,12 @@ public class UIManager : MonoBehaviour {
             gD.playerNames[i] = nameObject.GetComponent<InputField>().text;
             GameObject colorObject = parent.transform.GetChild(2).gameObject;
             gD.playerColors[i] = CheckWhatColor(colorObject.GetComponent<Dropdown>().captionText.text);
+            
+        }
+        if(currentPlayerAmount == 2) {
+            gD.startPositions = startPositions2P;
+        } else if(currentPlayerAmount == 4) {
+            gD.startPositions = startPositions4P;
         }
         Debug.LogError("LoadingNewScene");
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);

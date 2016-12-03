@@ -80,6 +80,24 @@ public class BallScript : MonoBehaviour {
                 Vector2 dir = new Vector2(x, -1).normalized;
 
                 GetComponent<Rigidbody2D>().velocity = dir * ballSpeed;
+            } else if(controller.playerPosition == "Right") {
+                float x = hitFactor(transform.position,
+                    col.transform.position,
+                    col.collider.bounds.size.y,
+                    false);
+
+                Vector2 dir = new Vector2(-1, x).normalized;
+
+                GetComponent<Rigidbody2D>().velocity = dir * ballSpeed;
+            } else if(controller.playerPosition == "Left") {
+                float x = hitFactor(transform.position,
+                    col.transform.position,
+                    col.collider.bounds.size.y,
+                    false);
+
+                Vector2 dir = new Vector2(1, x).normalized;
+
+                GetComponent<Rigidbody2D>().velocity = dir * ballSpeed;
             }
             //rigid2D.velocity += col.gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
         }

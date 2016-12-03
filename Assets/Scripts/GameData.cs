@@ -5,7 +5,7 @@ public class GameData : MonoBehaviour {
     public int playerCount;
     public string[] playerNames;
     public Color[] playerColors;
-
+    public Vector3[] startPositions;
     void Awake() {
         playerNames = new string[6];
         playerColors = new Color[6];
